@@ -1,0 +1,1 @@
+clang -g -Wall curiosity-perf.o environnement.o programme.o generation_terrains.o interprete.o -o curiosity-perf

@@ -11,7 +11,7 @@
 erreur_terrain initialise_environnement(Environnement * envt,
                                         char * fichier_terrain) {
   erreur_terrain errt;
-  int x, y; // Position initiale du robot
+  int x, y; /* Position initiale du robot*/
 
   errt = lire_terrain(fichier_terrain, &(envt->t), &x, &y);
 
@@ -25,18 +25,18 @@ erreur_terrain initialise_environnement(Environnement * envt,
 }
 
 resultat_deplacement avancer_envt(Environnement * envt) {
-  int x, y; // Position devant le robot
+  int x, y; /* Position devant le robot*/
 
-  // Récupérer la position devant le robot
+  /* Récupérer la position devant le robot*/
   position_devant(envt->r, &y, &x);
 
   if ((y < 0) || (y >= largeur(envt->t))
       || (x < 0) || (x >= hauteur(envt->t))) {
-    // Le robot est sorti
+    /* Le robot est sorti*/
     return SORTIE;
   } else {
-    // À corriger : il devrait y avoir une fonction pour cela dans le
-    // paquetage terrain
+    /* À corriger : il devrait y avoir une fonction pour cela dans le
+    // paquetage terrain */
     Case case_devant = envt->t.tab[x][y];
     switch(case_devant) {
     case LIBRE:
@@ -79,9 +79,9 @@ void droite_envt(Environnement * envt) {
      3 erreur (valeur du paramètre incorrect)
  */
 int mesure_envt(Environnement * envt, int d) {
-  int x, y; // Position courante du robot
-  int dx, dy; // Direction du robot
-  int mx, my; // Position de la mesure
+  int x, y; /* Position courante du robot*/
+  int dx, dy; /* Direction du robot*/
+  int mx, my; /* Position de la mesure*/
   
   position(envt->r, &x, &y);
 
@@ -93,7 +93,7 @@ int mesure_envt(Environnement * envt, int d) {
   }
   
   switch(d) {
-  case 0: // sur place
+  case 0: /* sur place*/
     mx = x; my = y;
     break;
   case 1: // devant

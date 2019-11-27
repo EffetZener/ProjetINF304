@@ -23,7 +23,7 @@ typedef enum {
   OK_DEPL,     /* Déplacement sur case libre */
   PLOUF,  /* Déplacement dans l'eau */
   CRASH,  /* Déplacement dans un rocher */
-  SORTIE, /* Sortie du terrain */
+  SORTIE /* Sortie du terrain */
 } resultat_deplacement;
 
 /* Avancer le robot sur le terrain : */

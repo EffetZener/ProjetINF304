@@ -94,7 +94,28 @@ void afficher_terrain(Terrain * t){
 		printf("\n");
 	}
 }	
-		
 
+
+void ecrire_terrain(FILE * f, Terrain T, int x, int y){
+		
+	//fprintf(f,"%d\n", T.largeur);
+	//fprintf(f, "%d\n", T.hauteur);
+	for (int i=0;i<T.hauteur;i++){
+		for (int j=0; j<T.largeur;j++){
+			if(i == x && j == y)
+				fprintf(f,"C");
+			else{
+				switch (T.tab[i][j]){
+					case LIBRE : fprintf(f,".");break;
+					case EAU : fprintf(f,"~");break;
+					case ROCHER: fprintf(f,"#");break;
+				}
+			}
+			
+		}
+		fprintf(f,"\n");
+	}
+			
+}
 /* À compléter */
 

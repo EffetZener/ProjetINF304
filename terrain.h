@@ -1,13 +1,14 @@
 #ifndef _TERRAIN_H_
 #define _TERRAIN_H_
 
+#include <stdio.h>
 typedef enum { LIBRE, EAU, ROCHER } Case;
 
 #define DIM_MAX 256
 
-// indexation utilisée : 
+/* indexation utilisée : 
 //  1er  indice : abscisse = colonne (colonne de gauche : abscisse = 0)
-//  2ème indice : ordonnée = ligne   (ligne du haut     : ordonnée = 0)
+//  2ème indice : ordonnée = ligne   (ligne du haut     : ordonnée = 0)*/
 
 typedef struct {
   int largeur, hauteur;
@@ -25,7 +26,7 @@ typedef enum {
   ERREUR_LIGNE_TROP_LONGUE,
   ERREUR_LIGNE_TROP_COURTE,
   ERREUR_LIGNES_MANQUANTES,
-  ERREUR_POSITION_ROBOT_MANQUANTE,
+  ERREUR_POSITION_ROBOT_MANQUANTE
 } erreur_terrain;
 
 /* Lecture d'un terrain dans un fichier de nom nom_f
@@ -52,6 +53,8 @@ int hauteur(Terrain t);
     - t.tab[x][y] = LIBRE
  */
 int est_case_libre(Terrain t, int x, int y);
+
+void ecrire_terrain(FILE * f, Terrain T, int x, int y);
 
 void afficher_terrain(Terrain * t);
 
