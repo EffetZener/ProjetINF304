@@ -6,7 +6,9 @@
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
+
 #define lgMax 1000
+
 void gestion_erreur_terrain(erreur_terrain e) {
   switch(e) {
   case OK: break;
@@ -106,6 +108,11 @@ int main(int argc, char ** argv){
 	Environnement environnement;
 	etat_inter etatI;
 
+	int nbFails = 0;
+	int totalSteps = 0;
+	int nbCrash = 0;
+	int nbCoule = 0;
+	int nbBloque = 0;
 	
 	if( fProg == NULL ){
   		printf("Probleme lecture fichier\n");
@@ -143,16 +150,28 @@ int main(int argc, char ** argv){
 			result = exec_pas(&prog1, &environnement, &etatI);
 			nbPas++;
 		}
+		printf("\n");
+		afficher_terrain(&T);
+		printf("\n");
+
 		switch(result){
-			case SORTIE_ROBOT:fprintf(fRes, "Nb de pas : %d\n", nbPas);break;
-			case OK_ROBOT : fprintf(fRes, "-1\n");break;
-			case PLOUF_ROBOT : fprintf (fRes, "-2\n");break;
-			case CRASH_ROBOT : fprintf( fRes, "-3\n");break;
-			default:break;
+			case SORTIE_ROBOT:fprintf(fRes, "Nb de pas : %d\n", nbPas); totalSteps++;break;
+			case OK_ROBOT : fprintf(fRes, "-1\n"); nbFails++; nbBloque++;break;
+			case PLOUF_ROBOT : fprintf (fRes, "-2\n"); nbFails++;nbCoule++; break;
+			case CRASH_ROBOT : fprintf( fRes, "-3\n"); nbFails++;nbCrash++; break;
+			default: nbFails++; break;
 		}
 	
 	}
-	
+	float tauxSucces = ((float)nbTerrain-(float)nbFails)/(float)nbTerrain;
+	printf("Taux de réussite : %f\n", tauxSucces );
+	printf("Taux d'echecs : %f\n", 1.0-tauxSucces);
+	printf("\tNombre de crash sur un rocher : %d\n", nbCrash);
+	printf("\tNb de fois ou le robot a coule : %d\n", nbCoule);
+	printf("\tNombre de fois ou le robot est reste coince : %d\n", nbBloque);	
+	int avgSteps = totalSteps / (nbTerrain-nbFails);
+	printf("Nb de pas moyen pour les réussites : %d\n", avgSteps);
+
 	
 	return EXIT_SUCCESS;
   }	
