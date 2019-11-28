@@ -136,9 +136,9 @@ int main(int argc, char ** argv){
 			printf("Terrain invalide, nb d'échec : %d\n", nbEchecs);
 		}
 		environnement.t = T;
-    		environnement.r.x = largeur/2;
-    		environnement.r.y = hauteur/2;
-    		environnement.r.o = Est;
+    	environnement.r.x = largeur/2;
+    	environnement.r.y = hauteur/2;
+    	environnement.r.o = Est;
 
 		erreur_programme erreur = lire_programme(&prog1,prog);
 		gestion_erreur_programme(erreur);
@@ -169,8 +169,8 @@ int main(int argc, char ** argv){
 	printf("\tNombre de crash sur un rocher : %d\n", nbCrash);
 	printf("\tNb de fois ou le robot a coule : %d\n", nbCoule);
 	printf("\tNombre de fois ou le robot est reste coince : %d\n", nbBloque);	
-	int avgSteps = totalSteps / (nbTerrain-nbFails);
-	printf("Nb de pas moyen pour les réussites : %d\n", avgSteps);
+	//int avgSteps = totalSteps / (nbTerrain-nbFails);
+	//printf("Nb de pas moyen pour les réussites : %d\n", avgSteps);
 
 	
 	return EXIT_SUCCESS;

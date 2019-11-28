@@ -21,18 +21,19 @@ void generation_aleatoire(Terrain* T, int l, int h, float dObst){
 	}
 	for (int i =0;i<l;i++){
 		for(int j=0; j<h;j++){
-			if (rand()%100<dObst*100){
-				if (rand()%(2)==1){
-					T->tab[i][j]=ROCHER;
-				}
-				else{
-					T->tab[i][j]=EAU;
-				}
-        if (i == j)
+      if (i == j)
         {
           T->tab[i][j] = LIBRE;
         }
-        
+      else{
+        if (rand()%100<dObst*100){
+          if (rand()%(2)==1){
+            T->tab[i][j]=ROCHER;
+          }
+          else{
+            T->tab[i][j]=EAU;
+          }
+        }
 //printf("%d/%d\n", i * l + j, l * h);
 			}
 		}
