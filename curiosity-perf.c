@@ -138,7 +138,7 @@ int main(int argc, char ** argv){
 		environnement.t = T;
     		environnement.r.x = largeur/2;
     		environnement.r.y = hauteur/2;
-    		environnement.r.o = Ouest;
+    		environnement.r.o = Est;
 
 		erreur_programme erreur = lire_programme(&prog1,prog);
 		gestion_erreur_programme(erreur);

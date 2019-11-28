@@ -28,6 +28,11 @@ void generation_aleatoire(Terrain* T, int l, int h, float dObst){
 				else{
 					T->tab[i][j]=EAU;
 				}
+        if (i == j)
+        {
+          T->tab[i][j] = LIBRE;
+        }
+        
 //printf("%d/%d\n", i * l + j, l * h);
 			}
 		}
